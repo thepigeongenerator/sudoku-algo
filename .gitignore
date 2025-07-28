@@ -1,0 +1,22 @@
+# Copyright (c) 2025 Quinn
+# Licensed under the MIT Licence. See LICENSE for details
+
+# ignore all dotfiles by default
+.*
+
+# unhide dotfiles we want to keep
+!.gitignore
+!.editorconfig
+!.clang-format
+!/.github/
+
+# hide output files
+*.o
+*.d
+*.out
+/bin/
+/obj/
+/test/bin/
+/test/obj/
+*.lock
+compile_commands.json

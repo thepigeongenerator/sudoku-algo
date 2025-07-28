@@ -1,0 +1,186 @@
+---
+# ---------------------------
+# general style settings
+# ---------------------------
+BasedOnStyle:  GNU
+Standard:      Auto
+ColumnLimit:   0
+LineEnding:    LF
+UseTab:        ForContinuationAndIndentation
+TabWidth:      8
+IndentWidth:   8
+ContinuationIndentWidth: 8
+AccessModifierOffset: -4
+
+# ---------------------------
+# alignment options
+# ---------------------------
+AlignAfterOpenBracket:        DontAlign
+AlignOperands:                DontAlign
+AlignTrailingComments:        true
+AlignConsecutiveMacros:       AcrossEmptyLines
+AlignEscapedNewlines:         Left
+AlignArrayOfStructures:       Left
+AlignConsecutiveAssignments:  None
+AlignConsecutiveBitFields:    AcrossEmptyLines
+AlignConsecutiveDeclarations: None
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+
+# ---------------------------
+# short constructs on a single line
+# ---------------------------
+AllowShortBlocksOnASingleLine:       Always
+AllowShortFunctionsOnASingleLine:    All
+AllowShortLambdasOnASingleLine:      All
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortCaseLabelsOnASingleLine:   true
+AllowShortEnumsOnASingleLine:        true
+AllowShortLoopsOnASingleLine:        true
+
+# ---------------------------
+# break and wrapping options
+# ---------------------------
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakAfterReturnType:        Automatic
+BreakTemplateDeclarations:         false
+BreakBeforeBinaryOperators:        None
+BreakBeforeConceptDeclarations:    Never
+BreakBeforeBraces:                 Custom
+BreakBeforeTernaryOperators:       false
+BreakStringLiterals:               false
+
+# ---------------------------
+# brace wrapping configuration
+# ---------------------------
+BraceWrapping:
+  AfterControlStatement: Never
+  AfterCaseLabel:        false
+  AfterClass:            false
+  AfterEnum:             false
+  AfterFunction:         false
+  AfterNamespace:        false
+  AfterObjCDeclaration:  false
+  AfterStruct:           false
+  AfterUnion:            false
+  AfterExternBlock:      false
+  BeforeCatch:           false
+  BeforeElse:            false
+  BeforeLambdaBody:      false
+  BeforeWhile:           false
+  IndentBraces:          false
+  SplitEmptyFunction:    true
+  SplitEmptyRecord:      true
+  SplitEmptyNamespace:   true
+
+# ---------------------------
+# constructor initializer and parameter packing options
+# ---------------------------
+ConstructorInitializerIndentWidth: 8
+PackConstructorInitializers: NextLine
+BinPackParameters: true
+BinPackArguments:  true
+
+# ---------------------------
+# pointer alignment
+# ---------------------------
+DerivePointerAlignment: false
+PointerAlignment:   Right
+ReferenceAlignment: Pointer
+QualifierAlignment: Left
+
+# ---------------------------
+# include settings and sorting
+# ---------------------------
+IncludeIsMainSourceRegex: ''
+IncludeIsMainRegex:       '([-_](test|unittest))?$'
+IncludeBlocks:      Regroup
+IncludeCategories:
+  - Regex:         '^<glad/gl\.h>'
+    Priority:      1
+    SortPriority:  0
+    CaseSensitive: true
+  - Regex:         '^<.*\.h>'
+    Priority:      2
+    SortPriority:  0
+    CaseSensitive: true
+  - Regex:         '^".*'
+    Priority:      3
+    SortPriority:  0
+    CaseSensitive: true
+
+# ---------------------------
+# additional formatting and sorting details
+# ---------------------------
+FixNamespaceComments:             false
+MaxEmptyLinesToKeep:              2
+ReflowComments:                   true
+RemoveBracesLLVM:                 false
+AllowAllArgumentsOnNextLine:      false
+AllowAllParametersOfDeclarationOnNextLine: false
+EmptyLineAfterAccessModifier:     Never
+EmptyLineBeforeAccessModifier:    LogicalBlock
+ExperimentalAutoDetectBinPacking: false
+SeparateDefinitionBlocks:         Leave
+ShortNamespaceLines:              1
+SortIncludes:                     CaseSensitive
+SortJavaStaticImport:             Before
+SortUsingDeclarations:            false
+
+# ---------------------------
+# spacing options
+# ---------------------------
+SpaceAfterCStyleCast:             false
+SpaceAfterLogicalNot:             false
+SpaceAfterTemplateKeyword:        true
+SpaceBeforeAssignmentOperators:   true
+SpaceBeforeCaseColon:             false
+Cpp11BracedListStyle:             true
+SpaceBeforeCpp11BracedList:       false
+SpaceBeforeCtorInitializerColon:  true
+SpaceBeforeInheritanceColon:      true
+SpaceBeforeParens:                ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyBlock:                 true
+SpacesInParens:            Custom
+SpacesInParensOptions:
+  ExceptDoubleParentheses: false
+  InConditionalStatements: false
+  InCStyleCasts:           false
+  Other:                   false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles:               Never
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals:    false
+SpacesInCStyleCastParentheses:     false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
+SpacesInParentheses:       false
+SpacesInSquareBrackets:    false
+SpaceBeforeSquareBrackets: false
+BitFieldColonSpacing:      Both
+
+# ---------------------------
+# penalty settings
+# ---------------------------
+PenaltyBreakAssignment: 10
+PenaltyBreakBeforeFirstCallParameter: 30
+PenaltyBreakComment: 10
+PenaltyBreakFirstLessLess: 0
+PenaltyBreakString: 10
+PenaltyExcessCharacter: 100
+PenaltyReturnTypeOnItsOwnLine: 60
+
+# ---------------------------
+# indentation details
+# ---------------------------
+IndentAccessModifiers: false
+IndentCaseLabels:      false
+IndentCaseBlocks:      false
+IndentGotoLabels:      false
+IndentExternBlock:     AfterExternBlock
+IndentRequiresClause:  false
+IndentPPDirectives:    None
+PPIndentWidth:         1
+...

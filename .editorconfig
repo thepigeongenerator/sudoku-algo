@@ -1,0 +1,19 @@
+# Copyright (c) 2025 Quinn
+# Licensed under the MIT Licence. See LICENSE for details
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{c,h}]
+indent_style = tab
+indent_size = tab
+
+[{makefile}]
+indent_style = tab
+indent_size = tab
+
+[*.{yaml,json}]
+indent_style = space
+intent_size = 2
