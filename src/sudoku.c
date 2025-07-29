@@ -26,10 +26,20 @@ void sudoku_place(u16 *board, u16 val, uint idx) {
 }
 
 void sudoku_solve_step(u16 *board) {
-	u16 bmask[SUDOKU_DEPTH_2]; // board mask
-	memcpy(bmask, board, SUDOKU_DEPTH_2 * 2);
-	// TODO: first, we must somehow loop through the columns
-	// TODO: then, we must write to the bmask or do *magic* for the bits designating to 1-9 to be unset if ONLY one of them is set
+	for (uint i = 0; i < SUDOKU_DEPTH_2; i++) {
+		switch (board[i]) {
+		case SUDOKU_1:
+		case SUDOKU_2:
+		case SUDOKU_3:
+		case SUDOKU_4:
+		case SUDOKU_5:
+		case SUDOKU_6:
+		case SUDOKU_7:
+		case SUDOKU_8:
+		case SUDOKU_9:
+			sudoku_place(board, board[i], i);
+		}
+	}
 }
 
 void sudoku_print(const u16 *board) {
