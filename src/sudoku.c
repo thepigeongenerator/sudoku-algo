@@ -43,6 +43,7 @@ void sudoku_solve_step(u16 *board) {
 }
 
 void sudoku_print(const u16 *board) {
+	printf("+———-———-———-———-———-———-———-———-———+\n");
 	for (uint i = 0; i < SUDOKU_DEPTH_2; i++) {
 		char tile;
 		switch (board[i]) {
@@ -58,7 +59,8 @@ void sudoku_print(const u16 *board) {
 		default:       tile = ' '; break;
 		};
 
-		printf("|%c ", tile);
+		printf("| %c ", tile);
 		if (i % 9 == 8) printf("|\n");
 	}
+	printf("+———-———-———-———-———-———-———-———-———+\n");
 }
