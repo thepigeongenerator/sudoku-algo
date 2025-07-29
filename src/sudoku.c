@@ -14,14 +14,19 @@ void sudoku_init(u16 *board) {
 	}
 }
 
-void sudoku_place(u16 *board, u16 val, uint idx) {
+/* removes `val` from `*brd`, if `*brd` is not equal to `val` */
+static inline void setbrdpos(u16 *brd, u16 val) {
+	*brd &= ~(val & -(*brd != val));
+}
+
+void sudoku_place(u16 *brd, u16 val, uint idx) {
 	uint icol = idx % SUDOKU_DEPTH;
 	uint irow = idx - icol;
 	uint ibox = idx - (idx % SUDOKU_DEPTH_SQRT);
 	for (uint i = 0; i < SUDOKU_DEPTH; i++) {
-		board[irow + i] &= ~val;
-		board[icol + (i * SUDOKU_DEPTH)] &= ~val;
-		board[ibox + (i / SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH) + (i % SUDOKU_DEPTH_SQRT)] &= ~val;
+		setbrdpos(&brd[irow + i], val);
+		setbrdpos(&brd[icol + (i * SUDOKU_DEPTH)], val);
+		setbrdpos(&brd[ibox + (i / SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH) + (i % SUDOKU_DEPTH_SQRT)], val);
 	}
 }
 
