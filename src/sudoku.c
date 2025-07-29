@@ -8,6 +8,12 @@
 
 #include "util/intdef.h"
 
+void sudoku_init(u16 *board) {
+	for (uint i = 0; i < SUDOKU_DEPTH_2; i++) {
+		board[i] |= SUDOKU_ALL & -!board[i];
+	}
+}
+
 void sudoku_solve_step(u16 *board) {
 	u16 bmask[SUDOKU_DEPTH_2]; // board mask
 	memcpy(bmask, board, SUDOKU_DEPTH_2 * 2);

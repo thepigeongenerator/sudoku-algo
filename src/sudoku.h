@@ -4,8 +4,9 @@
 
 #include "util/intdef.h"
 
-#define SUDOKU_DEPTH   9                             // defines the "depth" of the puzzle.
-#define SUDOKU_DEPTH_2 (SUDOKU_DEPTH * SUDOKU_DEPTH) // computes how many squares there are
+#define SUDOKU_DEPTH_SQRT 3
+#define SUDOKU_DEPTH      (SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH_SQRT)
+#define SUDOKU_DEPTH_2    (SUDOKU_DEPTH * SUDOKU_DEPTH)
 
 /* bitmask  */
 enum sudoku_bitmask {
@@ -18,7 +19,11 @@ enum sudoku_bitmask {
 	SUDOKU_7 = 0x040,
 	SUDOKU_8 = 0x080,
 	SUDOKU_9 = 0x100,
+	SUDOKU_ALL = 0x01FF,
 };
+
+/* initialises the sudoku board to `SUDOKU_ALL`. (if the tile is empty) */
+void sudoku_init(u16 *board);
 
 /* TODO: write documentation */
 void sudoku_solve_step(u16 *board);
