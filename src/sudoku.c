@@ -14,6 +14,17 @@ void sudoku_init(u16 *board) {
 	}
 }
 
+void sudoku_place(u16 *board, u16 val, uint idx) {
+	uint icol = idx % SUDOKU_DEPTH;
+	uint irow = idx - icol;
+	uint ibox = idx - (idx % SUDOKU_DEPTH_SQRT);
+	for (uint i = 0; i < SUDOKU_DEPTH; i++) {
+		board[irow + i] &= ~val;
+		board[icol + (i * SUDOKU_DEPTH)] &= ~val;
+		board[ibox + (i / SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH) + (i % SUDOKU_DEPTH_SQRT)] &= ~val;
+	}
+}
+
 void sudoku_solve_step(u16 *board) {
 	u16 bmask[SUDOKU_DEPTH_2]; // board mask
 	memcpy(bmask, board, SUDOKU_DEPTH_2 * 2);
