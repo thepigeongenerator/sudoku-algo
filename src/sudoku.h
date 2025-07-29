@@ -28,8 +28,8 @@ void sudoku_init(u16 *board);
 /* places `val` at `idx` in `board`, and removes `val` from the possibilities in neighbouring tiles */
 void sudoku_place(u16 *board, u16 val, uint idx);
 
-/* TODO: write documentation */
+/* loops through the board, updating all places that only have a single possibility set. */
 void sudoku_solve_step(u16 *board);
 
-/* TODO: write documentation */
+/* prints the sudoku board to `stdout` */
 void sudoku_print(const u16 *board);
