@@ -42,6 +42,7 @@ void sudoku_solve_step(u16 *board) {
 		case SUDOKU_8:
 		case SUDOKU_9:
 			sudoku_place(board, board[i], i);
+			// printf("%i,%i\n", i % SUDOKU_DPT, i / SUDOKU_DPT);
 		}
 	}
 }
@@ -51,7 +52,7 @@ void sudoku_print(const u16 *board) {
 	for (uint i = 0; i < SUDOKU_LEN; i++) {
 		char tile;
 		switch (board[i]) {
-		case 0:        tile = 'x'; break;
+		// case 0:        tile = 'x'; break;
 		case SUDOKU_1: tile = '1'; break;
 		case SUDOKU_2: tile = '2'; break;
 		case SUDOKU_3: tile = '3'; break;
@@ -65,7 +66,7 @@ void sudoku_print(const u16 *board) {
 		};
 
 		printf("| %c ", tile);
-		// printf("|%3i", board[i]);
+		// printf("|%3X", board[i]);
 		if (i % 9 == 8) printf("|\n");
 	}
 	printf("+———-———-———-———-———-———-———-———-———+\n");
