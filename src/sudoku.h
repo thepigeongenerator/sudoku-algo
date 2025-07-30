@@ -22,6 +22,9 @@ enum sudoku_bitmask {
 	SUDOKU_ALL = 0x01FF,
 };
 
+/* initialises the sudoku board to `SUDOKU_ALL`. (if the tile is empty) */
+void sudoku_init(u16 *board);
+
 /* places `val` at `idx` in `board`, and removes `val` from the possibilities in neighbouring tiles */
 void sudoku_place(u16 *board, u16 val, uint idx);
 

@@ -8,6 +8,12 @@
 
 #include "util/intdef.h"
 
+void sudoku_init(u16 *board) {
+	for (uint i = 0; i < SUDOKU_LEN; i++) {
+		board[i] |= SUDOKU_ALL & -!board[i];
+	}
+}
+
 /* removes `val` from `*brd`, if `*brd` is not equal to `val` */
 static inline void setbrdpos(u16 *brd, u16 val) {
 	*brd &= ~(val & -(*brd != val));
@@ -29,8 +35,6 @@ void sudoku_place(u16 *brd, u16 val, uint idx) {
 
 void sudoku_solve_step(u16 *board) {
 	for (uint i = 0; i < SUDOKU_LEN; i++) {
-		board[i] |= SUDOKU_ALL & -!board[i];
-
 		switch (board[i]) {
 		case SUDOKU_1:
 		case SUDOKU_2:

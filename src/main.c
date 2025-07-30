@@ -20,6 +20,8 @@ int main(int argc, char **argv) {
 		0x000, 0x000, 0x000, 0x000, 0x080, 0x000, 0x000, 0x040, 0x100,
 		// clang-format on
 	};
+	sudoku_init(board);
+	sudoku_print(board);
 
 	for (int i = 0; i < 2; i++) {
 		sudoku_solve_step(board);
