@@ -4,9 +4,9 @@
 
 #include "util/intdef.h"
 
-#define SUDOKU_DEPTH_SQRT 3
-#define SUDOKU_DEPTH      (SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH_SQRT)
-#define SUDOKU_DEPTH_2    (SUDOKU_DEPTH * SUDOKU_DEPTH)
+#define SUDOKU_BOXLEN     3
+#define SUDOKU_DPT        9
+#define SUDOKU_LEN        (SUDOKU_DPT * SUDOKU_DPT)
 
 /* bitmask  */
 enum sudoku_bitmask {

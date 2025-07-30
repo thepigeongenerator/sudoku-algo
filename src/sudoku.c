@@ -14,18 +14,18 @@ static inline void setbrdpos(u16 *brd, u16 val) {
 }
 
 void sudoku_place(u16 *brd, u16 val, uint idx) {
-	uint icol = idx % SUDOKU_DEPTH;
+	uint icol = idx % SUDOKU_DPT;
 	uint irow = idx - icol;
-	uint ibox = idx - (idx % SUDOKU_DEPTH_SQRT);
-	for (uint i = 0; i < SUDOKU_DEPTH; i++) {
+	uint ibox = idx - (idx % SUDOKU_BOXLEN);
+	for (uint i = 0; i < SUDOKU_DPT; i++) {
 		setbrdpos(&brd[irow + i], val);
-		setbrdpos(&brd[icol + (i * SUDOKU_DEPTH)], val);
-		setbrdpos(&brd[ibox + (i / SUDOKU_DEPTH_SQRT * SUDOKU_DEPTH) + (i % SUDOKU_DEPTH_SQRT)], val);
+		setbrdpos(&brd[icol + (i * SUDOKU_DPT)], val);
+		setbrdpos(&brd[ibox + (i / SUDOKU_BOXLEN * SUDOKU_DPT) + (i % SUDOKU_BOXLEN)], val);
 	}
 }
 
 void sudoku_solve_step(u16 *board) {
-	for (uint i = 0; i < SUDOKU_DEPTH_2; i++) {
+	for (uint i = 0; i < SUDOKU_LEN; i++) {
 		board[i] |= SUDOKU_ALL & -!board[i];
 
 		switch (board[i]) {
@@ -45,7 +45,7 @@ void sudoku_solve_step(u16 *board) {
 
 void sudoku_print(const u16 *board) {
 	printf("+———-———-———-———-———-———-———-———-———+\n");
-	for (uint i = 0; i < SUDOKU_DEPTH_2; i++) {
+	for (uint i = 0; i < SUDOKU_LEN; i++) {
 		char tile;
 		switch (board[i]) {
 		case 0:        tile = 'x'; break;
