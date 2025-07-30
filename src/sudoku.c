@@ -14,13 +14,16 @@ static inline void setbrdpos(u16 *brd, u16 val) {
 }
 
 void sudoku_place(u16 *brd, u16 val, uint idx) {
-	uint icol = idx % SUDOKU_DPT;
-	uint irow = idx - icol;
-	uint ibox = idx - (idx % SUDOKU_BOXLEN);
+	uint x = idx % SUDOKU_DPT;
+	uint y = idx / SUDOKU_DPT;
+
+	uint irow = idx - x;
+	uint ibox = SUDOKU_DPT * (y % SUDOKU_BOXLEN) + SUDOKU_BOXLEN * (x % SUDOKU_BOXLEN);
+
 	for (uint i = 0; i < SUDOKU_DPT; i++) {
 		setbrdpos(&brd[irow + i], val);
-		setbrdpos(&brd[icol + (i * SUDOKU_DPT)], val);
-		setbrdpos(&brd[ibox + (i / SUDOKU_BOXLEN * SUDOKU_DPT) + (i % SUDOKU_BOXLEN)], val);
+		setbrdpos(&brd[x + (i * SUDOKU_DPT)], val);
+		setbrdpos(&brd[ibox + (SUDOKU_DPT * (i % SUDOKU_BOXLEN))], val);
 	}
 }
 
